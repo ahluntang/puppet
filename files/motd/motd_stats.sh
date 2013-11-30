@@ -16,7 +16,7 @@ fi
 CPUTIME=$(ps -eo pcpu | awk 'NR>1' | awk '{tot=tot+$1} END {print tot}')
 CPUCORES=$(cat /proc/cpuinfo | grep -c processor)
 echo "
-System Summary (collected `date`)
+System Summary for `hostname` (collected `date`)
  
  - CPU Usage (average)       = `echo $CPUTIME / $CPUCORES | bc`%
  - Memory free (real)        = `free -m | head -n 2 | tail -n 1 | awk {'print $4'}` Mb
