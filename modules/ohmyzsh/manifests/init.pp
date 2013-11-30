@@ -1,4 +1,4 @@
-define ohmyzsh ( $user = $title ) {
+class ohmyzsh ( $user = $title ) {
     package { "zsh":
         ensure  => "installed"
     }
