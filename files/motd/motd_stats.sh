@@ -28,4 +28,6 @@ System Summary (collected `date`)
  
 This server is managed by puppet.ahlun.be.
 
-" > /etc/motd
+" > /etc/motd.tail
+
+cp /etc/motd.tail /etc/motd
