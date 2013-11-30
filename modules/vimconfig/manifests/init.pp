@@ -55,11 +55,5 @@ class vimconfig ( $user = 'root' ) {
         target  => "${repodir}/vimconfig/vim",
     }
 
-    exec { "vim_bundles":
-        command => "vim +BundleInstall! +BundleClean +qall",
-        path    => [ "/usr/local/bin/", "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin" ],
-        cwd     => "${userdir}",
-    }
-
 
 }
