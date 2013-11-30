@@ -44,5 +44,11 @@ define ohmyzsh ( $user = $title ) {
         target  => "${repodir}/oh-my-zsh/custom/zshrc",
     }
 
+
+    file { "${userdir}/.bash_profile":
+        ensure  => 'file',
+        source  => "puppet:///files/ohmyzsh/bash_profile",
+    }
+
 }
 
