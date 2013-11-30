@@ -12,12 +12,13 @@ define vimconfig ( $user = $title ) {
     }
 
     if ( ( $user == '' ) or ( $user == 'root' ) ){
-        $repos   = "/root/repos/"
-        $repodir = "/root/repos/github/"
+        $userdir = "/root/"
     } else {
-        $repos   = "/home/${user}/repos/"
-        $repodir = "/home/${user}/repos/github/"
+        $userdir = "/home/${user}/"
     }
+
+    $repos   = "${userdir}/repos/"
+    $repodir = "${repos}/github/"
     
     file { "${repos}":
         ensure => directory
@@ -31,6 +32,16 @@ define vimconfig ( $user = $title ) {
         command => "wget --no-check-certificate https://raw.github.com/ahluntang/vimconfig/master/install.sh -O - | bash",
         path    => [ "/usr/local/bin/", "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin" ],
         cwd     => "${repodir}",
+    }
+
+    file { "${userdir}/.oh-my-zsh":
+        ensure  => 'link',
+        target  => "${repodir}/oh-my-zsh",
+    }
+
+    file { "${userdir}/.zshrc":
+        ensure  => 'link',
+        target  => ".oh-my-zsh/custom/zshrc",
     }
 
 }
