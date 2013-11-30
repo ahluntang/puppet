@@ -41,7 +41,7 @@ define vimconfig ( $user = $title ) {
 
     file { "${userdir}/.zshrc":
         ensure  => 'link',
-        target  => ".oh-my-zsh/custom/zshrc",
+        target  => "${repodir}/oh-my-zsh/custom/zshrc",
     }
 
 }
