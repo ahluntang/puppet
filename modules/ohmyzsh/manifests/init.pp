@@ -27,13 +27,13 @@ class ohmyzsh ( $user = 'root' ) {
     $repos   = "${userdir}/repos/"
     $repodir = "${repos}/github/"
     
-    if defined(File['${repos}']) == false {
+    if defined(File["${repos}"]) == false {
         file { "${repos}":
             ensure => directory
         }
     }
     
-    if defined(File['${repodir}']) == false {
+    if defined(File["${repodir}"]) == false {
         file { "${repodir}":
             ensure => directory
         }
