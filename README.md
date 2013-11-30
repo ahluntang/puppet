@@ -1,4 +1,0 @@
-puppet
-======
-
-Puppet recipes
