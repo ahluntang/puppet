@@ -9,7 +9,7 @@ if [[ ${CURRENT_LOAD} -ge 1 ]]
 then
   echo "Load is higher than 1, exiting."
   
-  curl -d "email=${EMAIL}" -d "&notification[from_screen_name]=MOTD" -d "&notification[message]=Serverload+higher+than+normal+(${LOAD_FULL})" http://boxcar.io/devices/providers/${API}/notifications
+  curl -d "email=${EMAIL}" -d "&notification[from_screen_name]=MOTD" -d "&notification[message]=`hostname`+load+higher+than+normal+(${LOAD_FULL})" http://boxcar.io/devices/providers/${API}/notifications
   exit 0
 fi
 
