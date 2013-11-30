@@ -43,7 +43,6 @@ class vimconfig ( $user = 'root' ) {
         command => "wget --no-check-certificate https://raw.github.com/ahluntang/vimconfig/master/install.sh -O - | sh",
         path    => [ "/usr/local/bin/", "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin" ],
         cwd     => "${repodir}",
-        notify  => Exec["vim_bundles"],
     }
 
     file { "${userdir}/.vimrc":
@@ -56,11 +55,10 @@ class vimconfig ( $user = 'root' ) {
         target  => "${repodir}/vimconfig/vim",
     }
 
-    exec { "vim_bundles":
-        command     => "/usr/bin/vim +BundleInstall! +BundleClean +qall",
+    exec { "setup_addvim":
+        command     => "echo 'vim +BundleInstall! +BundleClean +qall' >> setup.sh && chmod +x setup.sh",
         path        => [ "/usr/local/bin/", "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin" ],
         cwd         => "${userdir}",
-        refreshonly => true,
     }
 
 
