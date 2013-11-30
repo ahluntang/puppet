@@ -1,1 +1,1 @@
-class {'vimconfig':}
+

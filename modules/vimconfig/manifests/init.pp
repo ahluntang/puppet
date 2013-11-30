@@ -1,4 +1,4 @@
-class vimconfig {
+define vimconfig {
     package { "vim":
         ensure  => "installed"
     }
