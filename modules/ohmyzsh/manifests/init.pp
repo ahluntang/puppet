@@ -1,14 +1,21 @@
 class ohmyzsh ( $user = 'root' ) {
-    package { "zsh":
-        ensure  => "installed"
+
+    if defined(Package['zsh']) == false {
+        package { "zsh":
+          ensure => "installed"
+        }
     }
 
-    package { "wget":
-        ensure  => "installed"
+    if defined(Package['wget']) == false {
+        package { "wget":
+          ensure => "installed"
+        }
     }
 
-    package { "git":
-        ensure  => "installed"
+    if defined(Package['git']) == false {
+        package { "git":
+          ensure => "installed"
+        }
     }
 
     if ( ( $user == '' ) or ( $user == 'root' ) ){
@@ -43,7 +50,6 @@ class ohmyzsh ( $user = 'root' ) {
         ensure  => 'link',
         target  => "${repodir}/oh-my-zsh/custom/zshrc",
     }
-
 
     file { "${userdir}/.bash_profile":
         ensure  => 'file',

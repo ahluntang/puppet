@@ -1,14 +1,21 @@
 class vimconfig ( $user = 'root' ) {
-    package { "vim":
-        ensure  => "installed"
+
+    if defined(Package['vim']) == false {
+        package { "vim":
+          ensure => "installed"
+        }
     }
 
-    package { "wget":
-        ensure  => "installed"
+    if defined(Package['wget']) == false {
+        package { "wget":
+          ensure => "installed"
+        }
     }
 
-    package { "git":
-        ensure  => "installed"
+    if defined(Package['git']) == false {
+        package { "git":
+          ensure => "installed"
+        }
     }
 
     if ( ( $user == '' ) or ( $user == 'root' ) ){
