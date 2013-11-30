@@ -27,12 +27,16 @@ class vimconfig ( $user = 'root' ) {
     $repos   = "${userdir}/repos/"
     $repodir = "${repos}/github/"
     
-    file { "${repos}":
-        ensure => directory
+    if defined(File['${repos}']) == false {
+        file { "${repos}":
+            ensure => directory
+        }
     }
     
-    file { "${repodir}":
-        ensure => directory
+    if defined(File['${repodir}']) == false {
+        file { "${repodir}":
+            ensure => directory
+        }
     }
 
     exec { "set_vim":

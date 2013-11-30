@@ -41,14 +41,16 @@ class ohmyzsh ( $user = 'root' ) {
         cwd     => "${repodir}",
     }
 
-    file { "${userdir}/.oh-my-zsh":
-        ensure  => 'link',
-        target  => "${repodir}/oh-my-zsh",
+    if defined(File['${repos}']) == false {
+        file { "${repos}":
+            ensure => directory
+        }
     }
-
-    file { "${userdir}/.zshrc":
-        ensure  => 'link',
-        target  => "${repodir}/oh-my-zsh/custom/zshrc",
+    
+    if defined(File['${repodir}']) == false {
+        file { "${repodir}":
+            ensure => directory
+        }
     }
 
     file { "${userdir}/.bash_profile":
