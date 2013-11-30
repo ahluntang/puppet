@@ -1,4 +1,4 @@
-define vimconfig {
+define vimconfig ( $user = $title ) {
     package { "vim":
         ensure  => "installed"
     }
@@ -11,10 +11,16 @@ define vimconfig {
         ensure  => "installed"
     }
 
-    if ( ( $title == '' ) or ( $title == 'root' ) ){
-        $repodir = "/root/repos/github"
+    if ( ( $user == '' ) or ( $user == 'root' ) ){
+        $repos   = "/root/repos/"
+        $repodir = "/root/repos/github/"
     } else {
-        $repodir = "/home/${title}/repos/github"
+        $repos   = "/home/${user}/repos/"
+        $repodir = "/home/${user}/repos/github/"
+    }
+    
+    file { "${repos}":
+        ensure => directory
     }
     
     file { "${repodir}":
