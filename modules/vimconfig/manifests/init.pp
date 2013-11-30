@@ -34,14 +34,4 @@ define vimconfig ( $user = $title ) {
         cwd     => "${repodir}",
     }
 
-    file { "${userdir}/.oh-my-zsh":
-        ensure  => 'link',
-        target  => "${repodir}/oh-my-zsh",
-    }
-
-    file { "${userdir}/.zshrc":
-        ensure  => 'link',
-        target  => "${repodir}/oh-my-zsh/custom/zshrc",
-    }
-
 }
