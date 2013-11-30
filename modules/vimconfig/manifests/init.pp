@@ -29,7 +29,7 @@ class vimconfig ( $user = 'root' ) {
     }
 
     exec { "set_vim":
-        command => "wget --no-check-certificate https://raw.github.com/ahluntang/vimconfig/master/install.sh -O - | bash",
+        command => "wget --no-check-certificate https://raw.github.com/ahluntang/vimconfig/master/install.sh -O - | sh",
         path    => [ "/usr/local/bin/", "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin" ],
         cwd     => "${repodir}",
     }
