@@ -28,7 +28,7 @@ define ohmyzsh ( $user = $title ) {
     }
 
     exec { "set_zsh":
-        command => "wget --no-check-certificate https://raw.github.com/ahluntang/oh-my-zsh/master/custom/install.sh -O - | bash",
+        command => "wget --no-check-certificate https://raw.github.com/ahluntang/oh-my-zsh/master/custom/install.sh -O - | sh",
         path    => [ "/usr/local/bin/", "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin" ],
         cwd     => "${repodir}",
     }
