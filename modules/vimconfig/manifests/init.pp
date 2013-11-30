@@ -1,4 +1,4 @@
-class vimconfig ( $user = $title ) {
+class vimconfig ( $user = 'root' ) {
     package { "vim":
         ensure  => "installed"
     }
