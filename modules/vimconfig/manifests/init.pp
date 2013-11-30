@@ -45,4 +45,14 @@ class vimconfig ( $user = 'root' ) {
         cwd     => "${repodir}",
     }
 
+    file { "${userdir}/.vimrc":
+        ensure  => 'link',
+        target  => "${repodir}/vimconfig/vimrc",
+    }
+
+    file { "${userdir}/.vim":
+        ensure  => 'link',
+        target  => "${repodir}/vimconfig/vim",
+    }
+
 }
