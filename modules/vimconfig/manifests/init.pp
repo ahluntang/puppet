@@ -56,7 +56,7 @@ class vimconfig ( $user = 'root' ) {
     }
 
     exec { "setup_addvim":
-        command     => "echo 'vim +BundleInstall! +BundleClean +qall' >> setup.sh && chmod +x setup.sh",
+        command     => "vim +BundleInstall! +BundleClean +qall",
         path        => [ "/usr/local/bin/", "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin" ],
         cwd         => "${userdir}",
         provider    => shell,
